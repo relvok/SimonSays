@@ -8,6 +8,7 @@ export interface UiState {
   padsDisabled: boolean;
   modalVisible: boolean;
   showStart: boolean;
+  gameState: Object;
 }
 
 export interface ResultsState {

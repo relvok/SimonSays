@@ -1,25 +1,24 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, {useEffect} from 'react';
 import {Text, SafeAreaView} from 'react-native';
-
-import Board from '../components/Board';
+import {useDispatch, useSelector} from 'react-redux';
 import {Provider} from 'react-redux';
-import {NavigationContainer} from '@react-navigation/native';
-import {store, persistor} from 'store';
+import {RootState, AppDispatch, store} from 'store';
+import {setSounds, setGameState} from 'store/actions';
+import styles from './styles';
+import Board from '../components/Board';
+import Gradient from '../components/Gradient';
 import EndGameModal from 'components/EndGameModal';
 import {createColorSounds} from 'utils/sounds';
-import {setSounds} from 'store/actions';
-import {RootState, AppDispatch} from 'store';
-import Gradient from '../components/Gradient';
-import styles from './styles';
 
-const GameScreen = props => {
-  const {modalVisible, pads} = useSelector((state: RootState) => state.ui);
+const GameScreen = (props: any) => {
+  const {modalVisible, pads, gameState} = useSelector(
+    (state: RootState) => state.ui,
+  );
   const {simonSequence} = useSelector((state: RootState) => state.sequence);
   const {score} = useSelector((state: RootState) => state.results);
   const {sounds} = useSelector((state: RootState) => state.audio);
 
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch();
   useEffect(() => {
     const sounds = createColorSounds();
     dispatch(setSounds(sounds));
@@ -36,12 +35,8 @@ const GameScreen = props => {
           score={score}
           sounds={sounds}
         />
-        {modalVisible && (
-          <EndGameModal
-            testID="end-game-modal"
-            modalVisible={modalVisible}
-            navigation={props.navigation}
-          />
+        {!gameState.gameOver && (
+          <EndGameModal gameState={gameState} navigation={props.navigation} />
         )}
       </SafeAreaView>
     </Provider>

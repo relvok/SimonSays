@@ -9,29 +9,26 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import {RootState} from '../store';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Gradient from '../components/Gradient';
-import styles from './styles';
+import {RootState} from 'store';
 import {setShowStart, setSimonSequence} from 'store/actions';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Gradient from 'components/Gradient';
+import ResultItem from 'components/ResultItem';
+import styles from './styles';
+import {ResultItemProps} from 'components/types';
 
-const ResultsScreen = props => {
-  //get username and score from reducer
+const ResultsScreen = (props: any) => {
   const {results} = useSelector((state: RootState) => state.results);
   const dispatch = useDispatch();
+
   const onReturnClickHandler = () => {
     dispatch(setShowStart(true));
     dispatch(setSimonSequence([]));
     props.navigation.navigate('GameScreen');
   };
 
-  const renderItem = item => {
-    return (
-      <View style={styles.item}>
-        <Text style={styles.itemText}>{item.item.username}</Text>
-        <Text style={styles.itemText}>{item.item.score}</Text>
-      </View>
-    );
+  const renderItem = (item: ResultItemProps) => {
+    return <ResultItem score={item.score} username={item.username} />;
   };
   return (
     <SafeAreaView style={styles.resultsContainer}>
@@ -47,9 +44,8 @@ const ResultsScreen = props => {
       </View>
       <FlatList
         data={results.slice(0, 10)}
-        renderItem={renderItem}
+        renderItem={item => renderItem(item.item)}
         keyExtractor={(item, index) => index.toString()}
-        // extraData={selectedId}
       />
     </SafeAreaView>
   );

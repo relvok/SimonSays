@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StartButton component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "elevation": 5,
+      "justifyContent": "center",
+      "position": "absolute",
+      "zIndex": 1,
+    }
+  }
+>
+  <View
+    accessibilityState={
+      Object {
+        "disabled": false,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "borderRadius": 60,
+        "elevation": 5,
+        "height": 70,
+        "justifyContent": "center",
+        "opacity": 1,
+        "width": 70,
+      }
+    }
+    testID="start-button"
+  >
+    <Text
+      style={
+        Object {
+          "color": "grey",
+          "fontFamily": "Roboto",
+          "fontSize": 15,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      START
+    </Text>
+  </View>
+</View>
+`;

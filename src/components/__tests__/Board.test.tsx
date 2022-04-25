@@ -1,13 +1,6 @@
-//unit tests for Board component
-// Language: typescript
-// Path: src\components\__tests__\Board.test.tsx
-// Compare this snippet from src\components\__tests__\Board.test.tsx:
 import React, {useState} from 'react';
-
 import Board from 'components/Board';
 import renderer from 'react-test-renderer';
-import {renderHook, act} from '@testing-library/react-hooks';
-import {waitFor, fireEvent} from '@testing-library/react-native';
 
 describe('Board component', () => {
   it('renders correctly', () => {
@@ -32,7 +25,8 @@ describe('Board component', () => {
           percent: '180deg',
         },
       ],
-      component = renderer.create(<Board pads={pads} />);
+      component = renderer.create(
+        <Board simonSequence={[]} pads={pads} score={0} sounds={[]} />,
+      );
   });
-  // test for checking if playSequence is called when start button is clicked
 });

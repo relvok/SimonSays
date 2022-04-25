@@ -34,22 +34,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#090909',
   },
-  item: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 15,
-    marginRight: 15,
-    marginLeft: 15,
-    borderBottomWidth: 1,
-    borderColor: '#F4F4F4',
-  },
-  itemText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    fontFamily: 'Roboto',
-    color: '#AAAAAA',
-  },
+
   arrow: {
     flex: 1,
   },

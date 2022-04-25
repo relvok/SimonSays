@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StartButton component renders correctly 1`] = `
+<View>
+  <View
+    accessibilityState={
+      Object {
+        "disabled": false,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": undefined,
+        "borderBottomLeftRadius": 0,
+        "borderBottomRightRadius": 10,
+        "borderColor": "white",
+        "borderTopLeftRadius": 130,
+        "borderTopRightRadius": 0,
+        "borderWidth": 0,
+        "height": 130,
+        "margin": 5,
+        "opacity": 1,
+        "transform": Array [
+          Object {
+            "rotate": "",
+          },
+        ],
+        "width": 130,
+      }
+    }
+    testID="pad-button"
+  />
+</View>
+`;

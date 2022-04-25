@@ -26,6 +26,11 @@ const initialState: UiState = {
   padsDisabled: true,
   modalVisible: false,
   showStart: true,
+  gameState: {
+    started: false,
+    turn: 'user',
+    gameOver: false,
+  },
 };
 
 export const uiReducer = (
@@ -53,6 +58,11 @@ export const uiReducer = (
       return {
         ...state,
         showStart: payload,
+      };
+    case 'SET_GAME_STATE':
+      return {
+        ...state,
+        gameState: payload,
       };
 
     default:

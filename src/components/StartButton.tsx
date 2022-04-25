@@ -1,72 +1,39 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TouchableOpacity,
-  TouchableHighlight,
-} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {StartProps} from './types';
-import {RootState, AppDispatch} from '../store';
-import {useSequence} from '../utils/hooks';
+import {Text, View, TouchableOpacity} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {AppDispatch} from '../store';
+import {StartButtonProps} from './types';
+import styles from './styles';
 
 const StartButton = ({
   sounds,
   pads,
   simonSequence,
-  setShowStart,
+  setGameState,
+  gameState,
   playSequence,
-}: StartProps) => {
-  const [disabled, setDisabled] = useState(false); // change to redux state
+}: StartButtonProps) => {
+  const [disabled, setDisabled] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
 
   const onClickHandler = async () => {
-    dispatch(setShowStart(false));
+    dispatch(setGameState({started: true, turn: 'simon', gameOver: false}));
     setDisabled(true);
     await playSequence(simonSequence, pads, sounds);
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.startContainer}>
       <TouchableOpacity
+        testID="start-button"
         activeOpacity={1}
-        disabled={disabled}
-        style={styles.button}
+        disabled={!gameState.started && !gameState.gameOver}
+        style={styles.startButton}
         onPress={() => onClickHandler()}>
-        <Text style={styles.text}>START</Text>
+        <Text style={styles.startText}>START</Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1,
-    elevation: 5,
-    // transform: [{translateX: -35}, {translateY: -35}],
-  },
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
-    borderRadius: 60,
-    width: 70,
-    height: 70,
-    elevation: 5,
-  },
-
-  text: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    fontFamily: 'Roboto',
-    color: 'grey',
-  },
-});
 
 export default StartButton;

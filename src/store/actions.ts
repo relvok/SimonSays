@@ -57,3 +57,8 @@ export const setShowStart = (showStart: boolean) => ({
   type: 'SET_SHOW_START',
   payload: showStart,
 });
+
+export const setGameState = (gameState: Object) => ({
+  type: 'SET_GAME_STATE',
+  payload: gameState,
+});

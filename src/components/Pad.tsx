@@ -1,13 +1,15 @@
 import React from 'react';
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import {highlightPad} from 'utils/colors';
 import {PadProps} from './types';
+import styles from './styles';
 
-const Pad = ({pad, onPadClickHandler, padsDisabled}: PadProps) => {
+const Pad = ({pad, onPadClickHandler, gameState}: PadProps) => {
   return (
     <View>
       <TouchableOpacity
-        disabled={padsDisabled}
+        testID="pad-button"
+        disabled={gameState.turn === 'simon'}
         activeOpacity={1}
         onPress={() => {
           onPadClickHandler(pad);
@@ -16,26 +18,11 @@ const Pad = ({pad, onPadClickHandler, padsDisabled}: PadProps) => {
           styles.pad,
           {
             backgroundColor: pad.isActive ? highlightPad(pad) : pad.value,
-
             transform: [{rotate: pad.percent}],
           },
         ]}></TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  pad: {
-    width: 130,
-    height: 130,
-    borderTopLeftRadius: 130,
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 10,
-    borderBottomLeftRadius: 0,
-    margin: 5,
-    borderWidth: 0,
-    borderColor: 'white',
-  },
-});
 
 export default Pad;
