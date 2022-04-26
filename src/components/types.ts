@@ -1,16 +1,22 @@
-export interface StartButtonProps {
-  simonSequence: Array<Object>;
-  pads: Array<PadType>;
-  sounds: Array<Object>;
-  setShowStart: (showStart: boolean) => void;
+import {GameState} from 'store/types';
 
+//export SimonSequenceType
+export type PadArrayType = Array<PadType> | any;
+
+export interface StartButtonProps {
+  simonSequence: PadArrayType;
+  pads: PadArrayType;
+  sounds: Array<Object>;
+  setGameState: (gameState: GameState) => void;
+  gameState: GameState;
   playSequence: any;
 }
 
 export interface BoardProps {
-  simonSequence: Array<Object>;
-  pads: Array<PadType>;
+  simonSequence: PadArrayType;
+  pads: PadArrayType;
   sounds: Array<Object>;
+  highScore: number;
   score: number;
 }
 
@@ -24,12 +30,12 @@ export interface PadType {
 export interface PadProps {
   pad: PadType;
   onPadClickHandler: any;
-  padsDisabled: boolean;
+  gameState: GameState;
 }
 
 export interface ModalProps {
-  modalVisible: boolean;
   navigation: any;
+  gameState: GameState;
 }
 
 export interface ResultItemProps {

@@ -1,47 +1,26 @@
-import {
-  setPads,
-  setSimonSequence,
-  setScore,
-  setPadsDisabled,
-  setHighScore,
-  setModalVisible,
-} from '../store/actions';
-import {playAudio, playError, createColorSounds} from '../utils/sounds';
-const BRIGHTNESS_MULTIPLIER = 1.25;
+import {PadType, PadArrayType} from 'components/types';
 
-type Pad = {
-  name: string;
-  value: string;
-  percent: string;
-  isActive: boolean;
+export const delay = (ms: number): Promise<void> => {
+  return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-// const sounds = createColorSounds();
-
-export function delay(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-export function sequenceGenerator(simonSequence, pads) {
+export function sequenceGenerator(
+  simonSequence: PadArrayType,
+  pads: PadArrayType,
+) {
   let choice: number = Math.floor(Math.random() * pads.length);
-  let sequence = [...simonSequence];
-  const newPad: Pad = pads[choice];
-  sequence.push(newPad);
+  let sequence = [...simonSequence, pads[choice]];
   return sequence;
 }
 
-export function checkSequence(userSequence, simonSequence) {
-  console.log('checkSequence', userSequence, simonSequence);
-
-  let correct = true;
-  for (let i = 0; i < userSequence.length; i++) {
-    if (
-      userSequence &&
-      simonSequence &&
-      userSequence[i].name !== simonSequence[i].name
-    ) {
-      correct = false;
-    }
+export function checkSequence(
+  pad: PadType,
+  score: number,
+  simonSequence: PadArrayType,
+) {
+  if (pad.name === simonSequence[score].name) {
+    return true;
+  } else {
+    return false;
   }
-  return correct;
 }

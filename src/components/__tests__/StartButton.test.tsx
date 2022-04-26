@@ -2,9 +2,10 @@ import React from 'react';
 import StartButton from 'components/StartButton';
 import renderer from 'react-test-renderer';
 import {fireEvent, act} from '@testing-library/react-native';
+import {GameState} from 'store/types';
 
 describe('StartButton component', () => {
-  const setShowStart = jest.fn();
+  const setGameState = jest.fn();
   const playSequence = jest.fn();
   //render StartButton component
   it('renders correctly', () => {
@@ -14,7 +15,8 @@ describe('StartButton component', () => {
           sounds={[]}
           pads={[]}
           simonSequence={[]}
-          setShowStart={setShowStart}
+          setGameState={setGameState}
+          gameState={GameState.START}
           playSequence={playSequence}
         />,
       )
@@ -28,7 +30,8 @@ describe('StartButton component', () => {
         sounds={[]}
         pads={[]}
         simonSequence={[]}
-        setShowStart={setShowStart}
+        setGameState={setGameState}
+        gameState={GameState.START}
         playSequence={playSequence}
       />,
     );
@@ -40,6 +43,6 @@ describe('StartButton component', () => {
     act(() => {
       fireEvent.press(button);
     });
-    expect(setShowStart).toHaveBeenCalled();
+    expect(setGameState).toHaveBeenCalled();
   });
 });

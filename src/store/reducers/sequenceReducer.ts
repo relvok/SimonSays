@@ -3,7 +3,6 @@ import {SequenceState} from '../types';
 //set root states
 const initialState: SequenceState = {
   simonSequence: [],
-  userSequence: [],
 };
 
 export const sequenceReducer = (
@@ -15,11 +14,6 @@ export const sequenceReducer = (
       return {
         ...state,
         simonSequence: payload,
-      };
-    case 'SET_USER_SEQUENCE':
-      return {
-        ...state,
-        userSequence: payload,
       };
 
     default:

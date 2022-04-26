@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StartButton component renders correctly 1`] = `
+exports[`Pad component renders correctly 1`] = `
 <View>
   <View
     accessibilityState={

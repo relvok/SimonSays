@@ -2,8 +2,9 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {fireEvent, act} from '@testing-library/react-native';
 import Pad from 'components/Pad';
+import {GameState} from 'store/types';
 
-describe('StartButton component', () => {
+describe('Pad component', () => {
   const onPadClickHandler = jest.fn();
   it('renders correctly', () => {
     const tree = renderer
@@ -11,7 +12,7 @@ describe('StartButton component', () => {
         <Pad
           pad={{name: '', value: '', isActive: true, percent: ''}}
           onPadClickHandler={onPadClickHandler}
-          padsDisabled={false}
+          gameState={GameState.START}
         />,
       )
       .toJSON();
@@ -23,7 +24,7 @@ describe('StartButton component', () => {
       <Pad
         pad={{name: '', value: '', isActive: true, percent: ''}}
         onPadClickHandler={onPadClickHandler}
-        padsDisabled={false}
+        gameState={GameState.START}
       />,
     );
     const instance = component.root;

@@ -1,6 +1,5 @@
 import {AudioState} from '../types';
 
-//set root states
 const initialState: AudioState = {
   sounds: [],
 };
@@ -15,7 +14,6 @@ export const audioReducer = (
         ...state,
         sounds: payload,
       };
-
     default:
       return state;
   }

@@ -1,4 +1,5 @@
 import Sound from 'react-native-sound';
+import {SoundType, SoundArrayType} from 'store/types';
 // Sound.setCategory('Playback');
 
 function createSound(name: string) {
@@ -11,7 +12,7 @@ function createSound(name: string) {
 }
 
 export function createColorSounds() {
-  let sounds = [];
+  let sounds: SoundArrayType = [];
   let soundNames = ['red', 'green', 'blue', 'yellow', 'error'];
   soundNames.forEach(name => {
     const sound = createSound(name);
@@ -20,12 +21,12 @@ export function createColorSounds() {
   return sounds;
 }
 
-export function playError(errorSound) {
+export function playError(errorSound: SoundType) {
   errorSound.sound.stop();
   errorSound.sound.play();
 }
 
-export function playAudio(colorSound) {
+export function playAudio(colorSound: SoundType) {
   switch (colorSound.name) {
     case 'red':
       colorSound.sound.stop();

@@ -10,16 +10,13 @@ import {PersistGate} from 'redux-persist/integration/react';
 
 const App = () => {
   return (
-    //strict
-    <StrictMode>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <NavigationContainer>
-            <SimonNavigator />
-          </NavigationContainer>
-        </PersistGate>
-      </Provider>
-    </StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <SimonNavigator />
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 };
 

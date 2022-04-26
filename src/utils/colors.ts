@@ -1,6 +1,6 @@
-//highlight rgb value
+import {PadType} from 'components/types';
 
-export function highlightPad(pad) {
+export function highlightPad(pad: PadType) {
   switch (pad.name) {
     case 'red':
       return '#EA8290';

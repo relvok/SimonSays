@@ -1,5 +1,5 @@
 import {UiState} from '../types';
-
+import {GameState} from '../types';
 //set root states
 const initialState: UiState = {
   pads: [
@@ -23,14 +23,7 @@ const initialState: UiState = {
       percent: '180deg',
     },
   ],
-  padsDisabled: true,
-  modalVisible: false,
-  showStart: true,
-  gameState: {
-    started: false,
-    turn: 'user',
-    gameOver: false,
-  },
+  gameState: GameState.START,
 };
 
 export const uiReducer = (
@@ -38,27 +31,12 @@ export const uiReducer = (
   {type, payload}: any,
 ): UiState => {
   switch (type) {
-    case 'SET_PADS_DISABLED':
-      return {
-        ...state,
-        padsDisabled: payload,
-      };
     case 'SET_PADS':
       return {
         ...state,
         pads: payload,
       };
 
-    case 'SET_MODAL_VISIBLE':
-      return {
-        ...state,
-        modalVisible: payload,
-      };
-    case 'SET_SHOW_START':
-      return {
-        ...state,
-        showStart: payload,
-      };
     case 'SET_GAME_STATE':
       return {
         ...state,

@@ -11,16 +11,18 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
   setUserName,
   setResults,
-  setModalVisible,
   setScore,
   setGameState,
+  setHighScore,
+  setSimonSequence,
 } from '../store/actions';
-import {RootState} from '../store';
+import {RootState} from 'store';
+import {GameState} from 'store/types';
 import {ModalProps} from './types';
 import styles from './styles';
 
 const EndGameModal = ({gameState, navigation}: ModalProps) => {
-  const [input, setInput] = useState('test');
+  const [input, setInput] = useState('');
   const {results, score} = useSelector((state: RootState) => state.results);
 
   const dispatch = useDispatch();
@@ -36,10 +38,11 @@ const EndGameModal = ({gameState, navigation}: ModalProps) => {
       const newResults = [...results, {username: input, score: score}];
       newResults.sort((a, b) => b.score - a.score);
       dispatch(setResults(newResults));
-      dispatch(setGameState({gameOn: false, turn: 'user'}));
+      dispatch(setGameState(GameState.START));
       setInput('');
       dispatch(setScore(0));
-
+      dispatch(setHighScore(0));
+      dispatch(setSimonSequence([]));
       navigation.navigate('ResultsScreen');
     }
   }
@@ -48,9 +51,9 @@ const EndGameModal = ({gameState, navigation}: ModalProps) => {
     <Modal
       animationType="slide"
       transparent={true}
-      visible={gameState.gameOver}>
+      visible={gameState === GameState.END}
       onRequestClose={() => {
-        setModalVisible(false);
+        dispatch(setGameState(GameState.START));
       }}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
@@ -60,7 +63,6 @@ const EndGameModal = ({gameState, navigation}: ModalProps) => {
             placeholder="Enter your name"
             onChangeText={text => {
               setInput(text);
-              console.log('text is', text);
             }}
           />
           <TouchableOpacity

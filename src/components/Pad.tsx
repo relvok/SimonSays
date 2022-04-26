@@ -3,16 +3,19 @@ import {View, TouchableOpacity} from 'react-native';
 import {highlightPad} from 'utils/colors';
 import {PadProps} from './types';
 import styles from './styles';
+import {GameState} from 'store/types';
 
 const Pad = ({pad, onPadClickHandler, gameState}: PadProps) => {
   return (
     <View>
       <TouchableOpacity
         testID="pad-button"
-        disabled={gameState.turn === 'simon'}
+        disabled={
+          gameState === GameState.SIMON_PLAYING || gameState === GameState.START
+        }
         activeOpacity={1}
         onPress={() => {
-          onPadClickHandler(pad);
+          GameState.USER_PLAYING && onPadClickHandler(pad);
         }}
         style={[
           styles.pad,

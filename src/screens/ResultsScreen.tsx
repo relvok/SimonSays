@@ -1,16 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {
-  StyleSheet,
   FlatList,
   Text,
   View,
-  Button,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import {RootState} from 'store';
-import {setShowStart, setSimonSequence} from 'store/actions';
+import {setSimonSequence, setGameState} from 'store/actions';
+import {GameState} from 'store/types';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Gradient from 'components/Gradient';
 import ResultItem from 'components/ResultItem';
@@ -22,8 +21,6 @@ const ResultsScreen = (props: any) => {
   const dispatch = useDispatch();
 
   const onReturnClickHandler = () => {
-    dispatch(setShowStart(true));
-    dispatch(setSimonSequence([]));
     props.navigation.navigate('GameScreen');
   };
 

@@ -1,23 +1,35 @@
+import {PadArrayType} from 'components/types';
+import Sound from 'react-native-sound';
+
 export interface SequenceState {
-  simonSequence: Array<Object>;
-  userSequence: Array<Object>;
+  simonSequence: PadArrayType;
 }
+export type SoundType = {
+  name: string;
+  sound: Sound;
+};
+
+export type SoundArrayType = Array<SoundType> | any;
 
 export interface UiState {
-  pads: Array<Object>;
-  padsDisabled: boolean;
-  modalVisible: boolean;
-  showStart: boolean;
-  gameState: Object;
+  pads: PadArrayType;
+  gameState: GameState;
 }
 
 export interface ResultsState {
   results: Array<Object>;
-  score: number;
   highScore: number;
+  score: number;
   username: string;
 }
 
 export interface AudioState {
-  sounds: Array<Object>;
+  sounds: Array<SoundType>;
+}
+
+export enum GameState {
+  START,
+  SIMON_PLAYING,
+  USER_PLAYING,
+  END,
 }
