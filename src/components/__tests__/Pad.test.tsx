@@ -1,6 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+
 import {fireEvent, act} from '@testing-library/react-native';
+
 import Pad from 'components/Pad';
 import {GameState} from 'store/types';
 

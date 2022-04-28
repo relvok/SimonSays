@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  // GameScreen styles.
   gameContainer: {
     flex: 1,
     backgroundColor: '#fff',
@@ -14,6 +15,7 @@ const styles = StyleSheet.create({
     marginBottom: '40%',
     fontFamily: 'Roboto',
   },
+  // ResultsScreen styles.
   resultsContainer: {
     flex: 1,
     backgroundColor: '#fff',
@@ -26,7 +28,6 @@ const styles = StyleSheet.create({
     marginRight: 15,
     marginLeft: 15,
   },
-
   resultsTitle: {
     flex: 1.5,
     alignSelf: 'center',
@@ -34,7 +35,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#090909',
   },
-
   arrow: {
     flex: 1,
   },

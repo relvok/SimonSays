@@ -1,6 +1,5 @@
 import {GameState} from 'store/types';
 
-//export SimonSequenceType
 export type PadArrayType = Array<PadType> | any;
 
 export interface StartButtonProps {

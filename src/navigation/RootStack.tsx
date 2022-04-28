@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {createStackNavigator} from '@react-navigation/stack';
 
 import GameScreen from '../screens/GameScreen';
@@ -11,6 +12,7 @@ export type RootStackTypes = {
 
 const RootStack = createStackNavigator<RootStackTypes>();
 
+// Navigation wrapper, intitializes at GameScreen.
 const SimonNavigator: React.FC = () => {
   return (
     <RootStack.Navigator initialRouteName="GameScreen">

@@ -1,6 +1,7 @@
 import React from 'react';
-import Board from 'components/Board';
 import renderer from 'react-test-renderer';
+
+import Board from 'components/Board';
 
 describe('Board component', () => {
   it('renders correctly', () => {
@@ -26,7 +27,13 @@ describe('Board component', () => {
         },
       ],
       component = renderer.create(
-        <Board simonSequence={[]} pads={pads} score={0} sounds={[]} />,
+        <Board
+          highScore={0}
+          simonSequence={[]}
+          pads={pads}
+          score={0}
+          sounds={[]}
+        />,
       );
   });
 });

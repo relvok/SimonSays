@@ -1,11 +1,13 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {combineReducers} from 'redux';
+import {persistReducer} from 'redux-persist';
 import {uiReducer} from './uiReducer';
 import {sequenceReducer} from './sequenceReducer';
 import {resultsReducer} from './resultsReducer';
 import {audioReducer} from './audioReducer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {persistReducer} from 'redux-persist';
 
+// Persist only results states reducer
 const resultsPersistConfig = {
   key: 'results',
   storage: AsyncStorage,
@@ -18,5 +20,3 @@ export const rootReducer = combineReducers({
   results: persistReducer(resultsPersistConfig, resultsReducer),
   audio: audioReducer,
 });
-
-// export type IRootState = ReturnType<typeof rootReducer>;

@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
+
 import {useDispatch} from 'react-redux';
 import {AppDispatch} from '../store';
 import {GameState} from 'store/types';
+
 import {StartButtonProps} from './types';
 import styles from './styles';
 
+// Starts game on user click.
 const StartButton = ({
   sounds,
   pads,

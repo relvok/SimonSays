@@ -4,6 +4,7 @@ export const delay = (ms: number): Promise<void> => {
   return new Promise(resolve => setTimeout(resolve, ms));
 };
 
+// Adds a new random pad to the Simon sequence.
 export function sequenceGenerator(
   simonSequence: PadArrayType,
   pads: PadArrayType,
@@ -13,6 +14,7 @@ export function sequenceGenerator(
   return sequence;
 }
 
+// Compares user pad click to Simon sequence.
 export function checkSequence(
   pad: PadType,
   score: number,

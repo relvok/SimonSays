@@ -1,5 +1,4 @@
-import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, {useState, useEffect} from 'react';
 import {
   FlatList,
   Text,
@@ -7,18 +6,25 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import {RootState} from 'store';
-import {setSimonSequence, setGameState} from 'store/actions';
-import {GameState} from 'store/types';
+
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+import {useSelector} from 'react-redux';
+import {RootState} from 'store';
+
 import Gradient from 'components/Gradient';
 import ResultItem from 'components/ResultItem';
 import styles from './styles';
 import {ResultItemProps} from 'components/types';
 
+// Displays top 10 results list.
 const ResultsScreen = (props: any) => {
   const {results} = useSelector((state: RootState) => state.results);
-  const dispatch = useDispatch();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setData(results);
+  }, []);
 
   const onReturnClickHandler = () => {
     props.navigation.navigate('GameScreen');
@@ -40,7 +46,7 @@ const ResultsScreen = (props: any) => {
         <Text style={styles.resultsTitle}>TOP 10</Text>
       </View>
       <FlatList
-        data={results.slice(0, 10)}
+        data={data.slice(0, 10)}
         renderItem={item => renderItem(item.item)}
         keyExtractor={(item, index) => index.toString()}
       />

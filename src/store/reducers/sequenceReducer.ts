@@ -1,6 +1,5 @@
 import {SequenceState} from '../types';
 
-//set root states
 const initialState: SequenceState = {
   simonSequence: [],
 };

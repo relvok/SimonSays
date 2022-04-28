@@ -1,8 +1,10 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+
 import styles from './styles';
 import {ResultItemProps} from './types';
 
+// Results list item.
 const ResultItem = ({score, username}: ResultItemProps) => {
   return (
     <View style={styles.item}>

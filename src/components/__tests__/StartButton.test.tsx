@@ -1,7 +1,8 @@
 import React from 'react';
-import StartButton from 'components/StartButton';
 import renderer from 'react-test-renderer';
 import {fireEvent, act} from '@testing-library/react-native';
+
+import StartButton from 'components/StartButton';
 import {GameState} from 'store/types';
 
 describe('StartButton component', () => {

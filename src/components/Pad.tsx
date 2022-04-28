@@ -1,9 +1,15 @@
 import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
+
+import {GameState} from 'store/types';
+
 import {highlightPad} from 'utils/colors';
 import {PadProps} from './types';
 import styles from './styles';
-import {GameState} from 'store/types';
+
+// Single Pad component
+// Styling controlled by inherited props and active state.
+// Inherits Pad click handler and a pad object from mapped pads array component.
 
 const Pad = ({pad, onPadClickHandler, gameState}: PadProps) => {
   return (

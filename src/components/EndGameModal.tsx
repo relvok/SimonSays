@@ -7,6 +7,7 @@ import {
   TextInput,
   ToastAndroid,
 } from 'react-native';
+
 import {useDispatch, useSelector} from 'react-redux';
 import {
   setUserName,
@@ -18,24 +19,29 @@ import {
 } from '../store/actions';
 import {RootState} from 'store';
 import {GameState} from 'store/types';
+
 import {ModalProps} from './types';
 import styles from './styles';
 
+// Modal for name input, and score listing.
+// Navigates to ResultsScreen.
 const EndGameModal = ({gameState, navigation}: ModalProps) => {
   const [input, setInput] = useState('');
-  const {results, score} = useSelector((state: RootState) => state.results);
+  const {results, score, highScore} = useSelector(
+    (state: RootState) => state.results,
+  );
 
   const dispatch = useDispatch();
 
   const showToast = () => {
     ToastAndroid.show('NO INPUT! PLEASE TYPE SOMETHING', ToastAndroid.SHORT);
   };
-
+  // Handler for user input and submit.
   function onSubmitHandler() {
     if (input.length === 0) showToast();
     else {
       dispatch(setUserName(input));
-      const newResults = [...results, {username: input, score: score}];
+      const newResults = [...results, {username: input, score: highScore}];
       newResults.sort((a, b) => b.score - a.score);
       dispatch(setResults(newResults));
       dispatch(setGameState(GameState.START));
@@ -71,7 +77,7 @@ const EndGameModal = ({gameState, navigation}: ModalProps) => {
             onPress={() => {
               onSubmitHandler();
             }}>
-            <Text style={styles.textStyle}>Submit</Text>
+            <Text style={styles.submitText}>Submit</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -1,15 +1,22 @@
-import {PadArrayType} from 'components/types';
 import Sound from 'react-native-sound';
+
+import {PadArrayType} from 'components/types';
+
+// Control current gameState type.
+export enum GameState {
+  // Before user clicks start and after results screen back click.
+  START,
+  // While Simon is playing.
+  SIMON_PLAYING,
+  // While user is playing.
+  USER_PLAYING,
+  // After user lost and before results screen back click.
+  END,
+}
 
 export interface SequenceState {
   simonSequence: PadArrayType;
 }
-export type SoundType = {
-  name: string;
-  sound: Sound;
-};
-
-export type SoundArrayType = Array<SoundType> | any;
 
 export interface UiState {
   pads: PadArrayType;
@@ -23,13 +30,13 @@ export interface ResultsState {
   username: string;
 }
 
+export type SoundType = {
+  name: string;
+  sound: Sound;
+};
+
+export type SoundArrayType = Array<SoundType> | any;
+
 export interface AudioState {
   sounds: Array<SoundType>;
-}
-
-export enum GameState {
-  START,
-  SIMON_PLAYING,
-  USER_PLAYING,
-  END,
 }

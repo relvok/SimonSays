@@ -1,6 +1,5 @@
 import {ResultsState} from '../types';
 
-//set root states
 const initialState: ResultsState = {
   results: [],
   score: 0,

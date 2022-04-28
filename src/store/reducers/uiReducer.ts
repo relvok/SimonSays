@@ -1,6 +1,6 @@
 import {UiState} from '../types';
 import {GameState} from '../types';
-//set root states
+
 const initialState: UiState = {
   pads: [
     {name: 'green', value: '#B0D8A4', isActive: false, percent: '0deg'},

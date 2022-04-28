@@ -1,6 +1,7 @@
 import Sound from 'react-native-sound';
+
 import {SoundType, SoundArrayType} from 'store/types';
-// Sound.setCategory('Playback');
+// Sound.setCategory('Playback'); // For iOS only.
 
 function createSound(name: string) {
   let sound = new Sound(name + '.mp3', Sound.MAIN_BUNDLE, error => {
@@ -29,22 +30,23 @@ export function playError(errorSound: SoundType) {
 export function playAudio(colorSound: SoundType) {
   switch (colorSound.name) {
     case 'red':
-      colorSound.sound.stop();
-      colorSound.sound.play();
+      stopPlayAudio(colorSound);
       break;
     case 'blue':
-      colorSound.sound.stop();
-      colorSound.sound.play();
+      stopPlayAudio(colorSound);
       break;
     case 'green':
-      colorSound.sound.stop();
-      colorSound.sound.play();
+      stopPlayAudio(colorSound);
       break;
     case 'yellow':
-      colorSound.sound.stop();
-      colorSound.sound.play();
+      stopPlayAudio(colorSound);
       break;
     default:
       break;
   }
+}
+
+export function stopPlayAudio(colorSound: SoundType) {
+  colorSound.sound.stop();
+  colorSound.sound.play();
 }

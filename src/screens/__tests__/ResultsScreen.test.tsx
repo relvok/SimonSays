@@ -1,12 +1,9 @@
-//create test for gamescreen
-// Language: typescript
-// Path: src\screens\__tests__\GameScreen.test.ts
-// Compare this snippet from src\screens\styles.ts:
-
 import React from 'react';
-import ResultsScreen from 'screens/ResultsScreen';
 import renderer from 'react-test-renderer';
+
 import {waitFor, fireEvent} from '@testing-library/react-native';
+
+import ResultsScreen from 'screens/ResultsScreen';
 
 describe('Results screen', () => {
   it('renders correctly', () => {

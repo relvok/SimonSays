@@ -1,12 +1,11 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  //Board component styles
-  container: {
+  // Board styles.
+  boardContainer: {
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   padRow: {
     flexDirection: 'row',
   },
@@ -16,7 +15,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
     color: 'grey',
   },
-  textContainer: {
+  scoreTextContainer: {
     position: 'absolute',
     zIndex: 2,
     alignItems: 'center',
@@ -32,7 +31,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
-  //Modal styles
+
+  // Modal styles.
   centeredView: {
     flex: 1,
     justifyContent: 'center',
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  textStyle: {
+  submitText: {
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
@@ -75,6 +75,8 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
+
+  // Gradient styles.
   topGradient: {
     position: 'absolute',
     left: 0,
@@ -93,6 +95,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     zIndex: -1,
   },
+
+  // Pad styles.
   pad: {
     width: 130,
     height: 130,
@@ -104,13 +108,13 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: 'white',
   },
+  // StartButton styles.
   startContainer: {
     position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 1,
     elevation: 5,
-    // transform: [{translateX: -35}, {translateY: -35}],
   },
   startButton: {
     alignItems: 'center',
@@ -121,13 +125,13 @@ const styles = StyleSheet.create({
     height: 70,
     elevation: 5,
   },
-
   startText: {
     fontSize: 15,
     fontWeight: 'bold',
     fontFamily: 'Roboto',
     color: 'grey',
   },
+  // Results list styles
   item: {
     flexDirection: 'row',
     justifyContent: 'space-between',

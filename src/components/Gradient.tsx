@@ -1,7 +1,10 @@
 import React from 'react';
+
 import LinearGradient from 'react-native-linear-gradient';
+
 import styles from './styles';
 
+// Linear gradient component for background
 const Gradient = () => {
   return (
     <>

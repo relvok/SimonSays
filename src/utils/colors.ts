@@ -1,5 +1,6 @@
 import {PadType} from 'components/types';
 
+// Highlight current pad.
 export function highlightPad(pad: PadType) {
   switch (pad.name) {
     case 'red':

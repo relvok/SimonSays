@@ -1,12 +1,14 @@
 import 'react-native-gesture-handler';
 
-import React, {StrictMode} from 'react';
+import React from 'react';
+
+import {NavigationContainer} from '@react-navigation/native';
 
 import {Provider} from 'react-redux';
-import {NavigationContainer} from '@react-navigation/native';
 import {store, persistor} from './src/store';
-import SimonNavigator from './src/navigation/RootStack';
 import {PersistGate} from 'redux-persist/integration/react';
+
+import SimonNavigator from './src/navigation/RootStack';
 
 const App = () => {
   return (

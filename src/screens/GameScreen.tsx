@@ -1,16 +1,19 @@
 import React, {useEffect} from 'react';
 import {Text, SafeAreaView} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {Provider} from 'react-redux';
+
+import {useDispatch, useSelector, Provider} from 'react-redux';
 import {RootState, store} from 'store';
 import {setSounds, setHighScore, setScore} from 'store/actions';
 import {GameState} from 'store/types';
-import styles from './styles';
+
 import Board from '../components/Board';
 import Gradient from '../components/Gradient';
 import EndGameModal from 'components/EndGameModal';
+import styles from './styles';
 import {createColorSounds} from 'utils/sounds';
 
+// Main GameScreen.
+// Contains title and Board components.
 const GameScreen = (props: any) => {
   const {pads, gameState} = useSelector((state: RootState) => state.ui);
   const {simonSequence} = useSelector((state: RootState) => state.sequence);
@@ -19,6 +22,7 @@ const GameScreen = (props: any) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
+    //Initial game settings.
     const sounds = createColorSounds();
     dispatch(setHighScore(0));
     dispatch(setScore(0));

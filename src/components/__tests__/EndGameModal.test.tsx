@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import EndGameModal from 'components/EndGameModal';
 import renderer from 'react-test-renderer';
+
 import {renderHook, act} from '@testing-library/react-hooks';
 import {waitFor, fireEvent} from '@testing-library/react-native';
+
+import EndGameModal from 'components/EndGameModal';
 import {GameState} from 'store/types';
 
 describe('EndGameModal', () => {
